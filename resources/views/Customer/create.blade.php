@@ -2,27 +2,56 @@
 <x-slot:title>{{ $title }}</x-slot:title>
  <div class="card shadow p-4">
     <h3 class="text-center mb-4">Tambah Customer</h3>
-<form>
+<form method="POST" action="{{ route('customer.store') }}">
+    @csrf
   <div class="mb-3">
     <label for="text" class="form-label fs-6">Nama</label>
-    <input type="text" class="form-control" id="text" name="name" >
+    <input type="text" class="form-control @error('name') is-invalid @enderror" id="text" name="name" value="{{ old('name') }}">
+    @error('name')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
+  </div>
   <div class="mb-3">
     <label for="text" class="form-label fs-6">Alamat</label>
-    <input type="text" class="form-control" id="text" name="alamat" >
+    <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="text" name="alamat" value="{{ old('alamat') }}" >
+    @error('alamat')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
+  </div>
   <div class="mb-3">
     <label for="email" class="form-label fs-6">Email</label>
-    <input type="email" class="form-control" id="email" name="email" >
+    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" >
+      @error('email')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
+  </div>
   <div class="mb-3">
     <label for="number" class="form-label fs-6">No_hp</label>
-    <input type="text" class="form-control" id="number" name="no_hp" >
+    <input type="text" class="form-control @error('no_hp') is-invalid @enderror" id="number" name="no_hp" value="{{ old('no_hp') }}" >
+      @error('no_hp')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
+  </div>
   <div class="mb-3">
     <label for="text" class="form-label fs-6">Status</label>
-    <input type="text" class="form-control" id="text" name="status" >
-   
+    <input type="text" class="form-control @error('status') is-invalid @enderror" id="text" name="status" value="{{ old('status') }}" >
+    @error('status')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+      @enderror
   </div>
  
   <button type="submit" class="btn btn-primary">Kirim </button>
-  <a href="#" class="btn btn-warning" type="button">Batal</a>
+  <a href="{{ route('index') }}" class="btn btn-warning" type="button">Batal</a>
 </form>
  </div>
 </x-app>

@@ -1,15 +1,20 @@
 <x-app>
     <x-slot:title>{{ $title }}</x-slot:title>
+    @session('success')
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endsession
     <div class="text-end">
         <a href="{{ route('customer.create') }}" class="btn btn-primary mb-2" role="button" >Tambah Data</a>
     </div>
     <form action="">
         <div class="row g-3 mb-3 align-items-end">
             <div class="col-md-6">
-                 <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search....." name="keyword" >
+                <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search.." >
             </div>
             <div class="col-md-4">
-                 <button type="submit" class="btn btn-success">Search</button>
+                <button type="submit" class="btn btn-success">Search</button>
             </div>
         </div>
     </form>
