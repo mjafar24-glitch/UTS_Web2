@@ -35,6 +35,7 @@
                                 <th>Email</th>
                                 <th>No_hp</th>
                                 <th>Status</th>
+                                <th>Aksi</th>
                             </tr>
 
                         </thead>
@@ -48,6 +49,11 @@
                                     <td>{{ $customer->email }}</td>
                                     <td>{{ $customer->no_hp }}</td>
                                     <td>{{ $customer->status }}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a href="{{ route('customer.edit', $customer) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        </div>
+                                    </td>
                                 </tr>
                                 @endforeach
                         </tbody>

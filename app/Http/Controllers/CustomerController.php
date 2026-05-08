@@ -75,7 +75,10 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('Customer.edit',[
+            'title' => 'Edit Customer', 
+            'customer' => $customer,
+        ]);
     }
 
     /**
@@ -83,7 +86,28 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+           $validated = $request->validate([
+            'name' => 'required|max:255',
+            'alamat' => 'required',
+            'email' => 'required|email',
+            'no_hp' => 'required|digits:12|numeric',
+            'status' => 'required|max:255',
+
+
+        ], [
+            'name.required' => 'Nama wajib diisi',
+            'name.max' => 'Nama maksimal 255 karakter',
+            'alamat.required' => 'Alamat wajib diisi',
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Email tidak valid',
+            'no_hp.required' => 'No_hp wajib diisi',
+            'no_hp.digits' => 'No_hp harus 12 digit',
+            'no_hp.numeric' => 'No_hp harus berupa angka',
+            'status.required' => 'Status wajib diisi',
+            'status.max' => 'Status maksimal 255 karakter',
+        ]);
+        $customer->update($validated);
+        return to_route('index')->withSuccess('Customer berhasil diupdate');
     }
 
     /**
