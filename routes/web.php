@@ -9,5 +9,6 @@ Route::get('/Customer/create',[CustomerController::class,'create'])->name('custo
 Route::post('/Customer',[CustomerController::class,'store'])->name('customer.store');
 Route::get('/Customer/{customer}/edit',[CustomerController::class,'edit'])->name('customer.edit');
 Route::put('/Customer/{customer}',[CustomerController::class,'update'])->name('customer.update');
+Route::delete('/Customer/{customer}',[CustomerController::class,'destroy'])->name('customer.destroy');
 Route::get('/Order/index',[OrderController::class,'index'])->name('order.index');
 Route::get('/Order/create',[OrderController::class,'create'])->name('order.create');    

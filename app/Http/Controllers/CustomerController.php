@@ -115,6 +115,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete($customer);
+        return to_route('index')->withSuccess('Customer berhasil dihapus');
     }
 }
