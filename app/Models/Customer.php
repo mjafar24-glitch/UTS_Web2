@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Fillable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+#[Fillable(['name', 'alamat','email','no_hp','status'])]
+class Customer extends Model
+{
+    /** @use HasFactory<\Database\Factories\CustomerFactory> */
+    use HasFactory;
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+}
