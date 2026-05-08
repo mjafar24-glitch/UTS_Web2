@@ -1,9 +1,20 @@
 <x-app>
     <x-slot:title>{{ $title }}</x-slot:title>
     <div class="text-end">
-        <a href="#" class="btn btn-primary mb-2" role="button" >Tambah Data</a>
+        <a href="{{ route('customer.create') }}" class="btn btn-primary mb-2" role="button" >Tambah Data</a>
     </div>
+    <form action="">
+        <div class="row g-3 mb-3 align-items-end">
+            <div class="col-md-6">
+                 <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search....." name="keyword" >
+            </div>
+            <div class="col-md-4">
+                 <button type="submit" class="btn btn-success">Search</button>
+            </div>
+        </div>
+    </form>
     <div class=" container mt-5">
+
         <div class="card shadow">
             <div class="card-header bg-dark text-white text-center">
                 <h3>Data Customer</h3>
@@ -11,7 +22,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class ="table table-bordered table-hover align-middle">
-                        <thead class="table-primary text-center fs-5">
+                        <thead class="table-primary text-center fs-5 fw-bold">
                             <tr>
                                 <th>No</th>
                                 <th>Nama Customer</th>
@@ -22,10 +33,11 @@
                             </tr>
 
                         </thead>
-                        <tbody class="text-center fs-5 fw-normal">
+                        <tbody class="text-center fs-6 fw-normal">
                             @foreach ($customers as $customer)
                                 <tr>
-                                    <td>{{ $customer->id }}</td>
+                                    
+                                    <td>{{ $customers->firstItem() + $loop->index }}</td>
                                     <td>{{ $customer->name }}</td>
                                     <td>{{ $customer->alamat }}</td>
                                     <td>{{ $customer->email }}</td>
@@ -43,4 +55,5 @@
            
         </div>
     </div>
+    {{ $customers->links() }}
 </x-app>

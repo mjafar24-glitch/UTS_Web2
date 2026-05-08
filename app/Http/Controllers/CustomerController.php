@@ -12,9 +12,14 @@ class CustomerController extends Controller
      */
     public function index()
     {
+        $customers = Customer::latest();
+        $keyword = request('keyword');
+        if ($keyword) {
+            $customers->where('name', 'like', '%'. $keyword.'%');
+        }
         return view('Customer.index',[
             'title' => 'Customer',
-            'customers' => Customer::all(),
+            'customers' => $customers->paginate(5),
         ]);
     }
 
