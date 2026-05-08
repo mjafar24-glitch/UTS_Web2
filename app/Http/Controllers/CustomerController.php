@@ -19,7 +19,7 @@ class CustomerController extends Controller
         }
         return view('Customer.index',[
             'title' => 'Customer',
-            'customers' => $customers->paginate(5),
+            'customers' => $customers->paginate(5)->withQueryString(),
         ]);
     }
 
@@ -67,7 +67,10 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        return view('Customer.show',[
+            'title' => 'Detail Customer',
+            'customer' => $customer,
+        ]);
     }
 
     /**

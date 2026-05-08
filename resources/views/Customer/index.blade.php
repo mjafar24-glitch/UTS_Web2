@@ -51,6 +51,7 @@
                                     <td>{{ $customer->status }}</td>
                                     <td>
                                         <div class="d-flex justify-content-center gap-2">
+                                            <a href="{{ route('customer.show', $customer) }}" class="btn btn-info btn-sm">Detail</a>
                                             <a href="{{ route('customer.edit', $customer) }}" class="btn btn-warning btn-sm">Edit</a>
                                             <form action="{{ route('customer.destroy', $customer) }}" method="POST">
                                                 @method('DELETE')
