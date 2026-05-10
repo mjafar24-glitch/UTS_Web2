@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -12,9 +13,20 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $orders = Order::latest();
+        $keyword = request('keyword');
+        if($keyword) {
+            $orders->where('name_produk', 'like', '%' . $keyword . '%');
+        }
+        $status = request('customer');
+        if($status) {
+            $orders->where('status', $status);
+        }
+
         return view('Order.index',[
             'title' => 'Order',
-            'orders' => Order::all(),
+             'customers' => Customer::latest()->get(),
+            'orders' => $orders->paginate(5)->withQueryString(),
         ]);
     }
 

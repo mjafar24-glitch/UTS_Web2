@@ -22,7 +22,7 @@ class CustomerFactory extends Factory
             'alamat' => fake()->address(),
             'email' => fake()->email(),
             'no_hp' => fake()->phoneNumber(),
-            'status' => fake()->randomElement(['active', 'inactive']),
+            'status' => fake()->randomElement(['pending', 'proses', 'selesai', 'batal']),
         ];
     }
 }

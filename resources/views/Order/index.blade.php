@@ -1,8 +1,27 @@
 <x-app>
     <x-slot:title>{{ $title }}</x-slot:title>
     <div class="text-end">
-        <a href="#" class="btn btn-primary mb-2" role="button" >Tambah Data</a>
+        <a href="{{ route('order.create') }}" class="btn btn-primary mb-2" role="button" >Tambah Data</a>
     </div>
+    <form action="">
+        <div class="row g-3 mb-3 align-items-end">
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search.." >
+            </div>
+            <div class="col-md-4">
+                <select name="customer" class="form-control">
+                    <option value="">--Pilih Status--</option>
+                    <option value="pending" {{ request('customer') == 'pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="proses" {{ request('customer') == 'proses' ? 'selected' : '' }}>Proses</option>
+                    <option value="selesai" {{ request('customer') == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                    <option value="batal" {{ request('customer') == 'batal' ? 'selected' : '' }}>Batal</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success">Search</button>
+            </div>
+        </div>
+    </form>
     <div class=" container mt-5">
         <div class="card shadow">
             <div class="card-header bg-dark text-white text-center">
@@ -45,4 +64,5 @@
            
         </div>
     </div>
+    {{ $orders->links() }}
 </x-app>

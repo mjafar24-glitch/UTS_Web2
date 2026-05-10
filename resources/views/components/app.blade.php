@@ -16,11 +16,30 @@
   </head>
   <body>
     {{-- page title --}}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+  <a class="navbar-brand" href="{{ route('index') }}">
+      <img src="{{ asset('img/logo.png') }}" alt="Logo" width="40" height="40" class="d-inline-block ">
+    Orderly
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('index')? 'fw-bold text-warning' : ''}}" aria-current="page" href="{{ route('index') }}">Customer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('order.index')? 'fw-bold text-warning' : ''}}" href="{{ route('order.index') }}">Order</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
     <div class="d-flex align-items-center justify-content-center vh-50">
         <img src="{{ asset('img/logo.png') }}" alt="Logo" width="200" height="200">
         <h1 class="fw-bold display-1">Orderly</h1>
     </div>
     <hr>
+    
     {{-- main app --}}
     <div class="container my-5">
             {{ $slot }}
