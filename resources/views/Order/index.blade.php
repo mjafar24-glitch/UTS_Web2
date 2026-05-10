@@ -1,5 +1,10 @@
 <x-app>
     <x-slot:title>{{ $title }}</x-slot:title>
+     @session('success')
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endsession
     <div class="text-end">
         <a href="{{ route('order.create') }}" class="btn btn-primary mb-2" role="button" >Tambah Data</a>
     </div>

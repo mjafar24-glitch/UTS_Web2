@@ -13,3 +13,4 @@ Route::get('/Customer/{customer}',[CustomerController::class,'show'])->name('cus
 Route::delete('/Customer/{customer}',[CustomerController::class,'destroy'])->name('customer.destroy');
 Route::get('/Order/index',[OrderController::class,'index'])->name('order.index');
 Route::get('/Order/create',[OrderController::class,'create'])->name('order.create');    
+Route::post('/Order',[OrderController::class,'store'])->name('order.store');
