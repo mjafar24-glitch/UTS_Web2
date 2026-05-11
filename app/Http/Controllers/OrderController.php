@@ -16,7 +16,7 @@ class OrderController extends Controller
         $orders = Order::latest();
         $keyword = request('keyword');
         if($keyword) {
-            $orders->where('name_produk', 'like', '%' . $keyword . '%');
+            $orders->where('nama_produk', 'like', '%' . $keyword . '%');
         }
         $status = request('customer');
         if($status) {
@@ -87,7 +87,11 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+         return view('Order.edit',[
+            'title' => 'Edit Orderan',
+            'customers' => Customer::latest()->get(),
+            'order' => $order
+        ]);
     }
 
     /**
@@ -95,7 +99,32 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+          $validated = $request->validate([
+            'customer_id' => 'required',
+            'nama_produk' => 'required|max:255',
+            'jumlah' => 'required|numeric',
+            'total_harga' => 'required|numeric',
+            'status' => 'required|max:255',
+            'pembayaran' => 'required|max:255',
+            'pengiriman' => 'required|max:255',
+
+
+        ], [
+            'customer_id.required' => 'Customer wajib diisi',
+            'nama_produk.required' => 'Nama produk wajib diisi',
+            'nama_produk.max' => 'Nama produk maksimal 255 karakter',
+            'jumlah.required' => 'Jumlah wajib diisi',
+            'total_harga.required' => 'Total harga wajib diisi',
+            'total_harga.numeric' => 'Total harga harus berupa angka',
+            'status.required' => 'Status wajib diisi',
+            'status.max' => 'Status maksimal 255 karakter',
+            'pembayaran.required' => 'Pembayaran wajib diisi',
+            'pembayaran.max' => 'Pembayaran maksimal 255 karakter',
+            'pengiriman.required' => 'Pengiriman wajib diisi',
+            'pengiriman.max' => 'Pengiriman maksimal 255 karakter',
+        ]);
+        $order->update($validated);
+        return to_route('order.index')->withSuccess('Order berhasil diperbarui');
     }
 
     /**

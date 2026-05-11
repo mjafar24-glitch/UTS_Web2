@@ -44,6 +44,7 @@
                                 <th>Status</th>
                                 <th>Pembayaran</th>
                                 <th>Pengiriman</th>
+                                <th>Aksi</th>
                             </tr>
 
                         </thead>
@@ -57,10 +58,13 @@
                                     <td>{{ $order->status }}</td>
                                     <td>{{ $order->pembayaran }}</td>
                                     <td>{{ $order->pengiriman }}</td>
+                                    <td>
+                                        <a href="{{ route('order.edit', $order->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                         </tbody>
-                        
+                            
                     </table>
 
                 </div>
