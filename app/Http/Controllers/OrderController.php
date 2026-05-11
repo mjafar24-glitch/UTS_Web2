@@ -132,6 +132,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+          $order->delete($order);
+        return to_route('order.index')->withSuccess('Order berhasil dihapus');
     }
 }
