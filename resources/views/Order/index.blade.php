@@ -59,12 +59,13 @@
                                     <td>{{ $order->pembayaran }}</td>
                                     <td>{{ $order->pengiriman }}</td>
                                     <td>
+                                        <a href="{{ route('order.show', $order->id)}}" class="btn btn-info btn-sm">Detail</a>
                                         <a href="{{ route('order.edit', $order->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                         <form action="{{ route('order.destroy', $order->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
-                                        </form>
+                                        </form>                 
                                     </td>
                                 </tr>
                                 @endforeach

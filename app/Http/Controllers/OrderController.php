@@ -79,7 +79,10 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+         return view('Order.show',[
+            'title' => 'Detail Orderan',
+            'order' => $order,
+        ]);
     }
 
     /**
