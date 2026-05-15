@@ -140,8 +140,16 @@ class OrderController extends Controller
             'catatan_pesanan.max' => 'Catatan pesanan maksimal 255 karakter',
             
         ]);
-        $order->update($validated);
-        return to_route('order.index')->withSuccess('Order berhasil diperbarui');
+       
+        try {
+            DB::beginTransaction();
+            $order ->update($validated);
+            DB::commit();
+            return to_route('order.index')->withSuccess('Order berhasil diperbarui');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return to_route('order.edit', ['order' => $order])->withErrors('Ada Kesalahan saat menyimpan data silahkan coba lagi');
+        }
     }
 
     /**
