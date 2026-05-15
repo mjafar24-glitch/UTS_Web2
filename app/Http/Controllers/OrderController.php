@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Customer;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class OrderController extends Controller
 {
     /**
@@ -72,8 +72,17 @@ class OrderController extends Controller
             'pengiriman.max' => 'Pengiriman maksimal 255 karakter',
             'catatan_pesanan.max' => 'Catatan pesanan maksimal 255 karakter',
         ]);
-        Order::create($validated);
-        return to_route('order.index')->withSuccess('Order berhasil ditambahkan');
+       
+        try {
+            DB::beginTransaction();
+            $order =Order::create($validated);
+            DB::commit();
+            return to_route('order.index')->withSuccess('Order berhasil ditambahkan');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back('order.create')->withErrors('Ada Kesalahan saat menyimpan data silahkan coba lagi');
+        }
+        
     }
 
     /**

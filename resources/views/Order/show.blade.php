@@ -1,7 +1,7 @@
 <x-app>
     <x-slot:title>{{ $title }}</x-slot:title>
     <div class="text-end">
-        <a href="{{ route('index') }}" class="btn btn-warning mb-2" role="button" >Back</a>
+        <a href="{{ route('order.index') }}" class="btn btn-warning mb-2" role="button" >Back</a>
     </div>
     {{-- Order --}}
         <ul class="list-group">
