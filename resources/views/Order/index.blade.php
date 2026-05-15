@@ -44,6 +44,7 @@
                                 <th>Status</th>
                                 <th>Pembayaran</th>
                                 <th>Pengiriman</th>
+                                <th>Catatan Pesanan</th>
                                 <th>Aksi</th>
                             </tr>
 
@@ -58,6 +59,7 @@
                                     <td>{{ $order->status }}</td>
                                     <td>{{ $order->pembayaran }}</td>
                                     <td>{{ $order->pengiriman }}</td>
+                                    <td>{{ $order->catatan_pesanan }}</td>
                                     <td>
                                         <a href="{{ route('order.show', $order->id)}}" class="btn btn-info btn-sm">Detail</a>
                                         <a href="{{ route('order.edit', $order->id) }}" class="btn btn-warning btn-sm">Edit</a>

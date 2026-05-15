@@ -54,6 +54,7 @@ class OrderController extends Controller
             'status' => 'required|max:255',
             'pembayaran' => 'required|max:255',
             'pengiriman' => 'required|max:255',
+            'catatan_pesanan' => 'nullable|max:255',
 
 
         ], [
@@ -69,6 +70,7 @@ class OrderController extends Controller
             'pembayaran.max' => 'Pembayaran maksimal 255 karakter',
             'pengiriman.required' => 'Pengiriman wajib diisi',
             'pengiriman.max' => 'Pengiriman maksimal 255 karakter',
+            'catatan_pesanan.max' => 'Catatan pesanan maksimal 255 karakter',
         ]);
         Order::create($validated);
         return to_route('order.index')->withSuccess('Order berhasil ditambahkan');
@@ -110,6 +112,7 @@ class OrderController extends Controller
             'status' => 'required|max:255',
             'pembayaran' => 'required|max:255',
             'pengiriman' => 'required|max:255',
+            'catatan_pesanan' => 'nullable|max:255',
 
 
         ], [
@@ -125,6 +128,8 @@ class OrderController extends Controller
             'pembayaran.max' => 'Pembayaran maksimal 255 karakter',
             'pengiriman.required' => 'Pengiriman wajib diisi',
             'pengiriman.max' => 'Pengiriman maksimal 255 karakter',
+            'catatan_pesanan.max' => 'Catatan pesanan maksimal 255 karakter',
+            
         ]);
         $order->update($validated);
         return to_route('order.index')->withSuccess('Order berhasil diperbarui');

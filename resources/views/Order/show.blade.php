@@ -12,6 +12,7 @@
             <li class="list-group-item">Status : {{ $order->status }}</li>
             <li class="list-group-item">Pembayaran : {{ $order->pembayaran }}</li>
             <li class="list-group-item">Pengiriman : {{ $order->pengiriman }}</li>
+            <li class="list-group-item">Catatan Pesanan : {{ $order->catatan_pesanan }}</li>
             <li class="list-group-item">Created At: {{ $order->created_at->diffForHumans() }}</li>
             <li class="list-group-item">Last Update: {{ $order->updated_at->diffForHumans() }}</li>
         </ul>

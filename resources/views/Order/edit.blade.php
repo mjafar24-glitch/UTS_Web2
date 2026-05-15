@@ -83,7 +83,16 @@
         </div>
     @enderror
   </div>
- 
+  <div class="mb-3">
+      <label for="text" class="form-label fs-6">Catatan Pesanan</label>
+      <input type="text" class="form-control @error('catatan_pesanan') is-invalid @enderror" id="number" name="catatan_pesanan" value="{{ old('catatan_pesanan',$order->catatan_pesanan) }}" >
+      @error('catatan_pesanan')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+      @enderror
+    </div>
+
   <button type="submit" class="btn btn-primary">Kirim </button>
   <a href="{{ route('order.index') }}" class="btn btn-warning" type="button">Batal</a>
 </form>
