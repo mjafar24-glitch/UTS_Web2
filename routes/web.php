@@ -19,5 +19,9 @@ Route::put('/Order/{order}',[OrderController::class,'update'])->name('order.upda
 Route::delete('/Order/{order}',[OrderController::class,'destroy'])->name('order.destroy');
 // soft delete
 Route::get('/Order/trash',[OrderController::class,'trash'])->name('order.trash');
+Route::put('/Order/{order}/restore',[OrderController::class,'restore'])->name('order.restore')->withtrashed();
+Route::delete('/Order/{order}/force-delete',[OrderController::class,'forceDelete'])->name('order.forceDelete')->withtrashed();
+
+
 Route::get('/Order/{order}',[OrderController::class,'show'])->name('order.show');
  

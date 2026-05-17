@@ -167,7 +167,12 @@ class OrderController extends Controller
         
         return view('Order.trash',[
             'title' => 'Trash Order',
-            'orders' => order::onlyTrashed()->latest()->paginate(5),
+            'orders' => Order::onlyTrashed()->latest()->paginate(5),
         ]);
+    }
+    public function restore(Order $order)
+    {
+          $order->restore();
+        return to_route('order.trash')->withSuccess('Order berhasil dikembalikan');
     }
 }
