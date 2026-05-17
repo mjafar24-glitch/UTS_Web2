@@ -17,4 +17,7 @@ Route::post('/Order',[OrderController::class,'store'])->name('order.store');
 Route::get('/Order/{order}/edit',[OrderController::class,'edit'])->name('order.edit');
 Route::put('/Order/{order}',[OrderController::class,'update'])->name('order.update');
 Route::delete('/Order/{order}',[OrderController::class,'destroy'])->name('order.destroy');
+// soft delete
+Route::get('/Order/trash',[OrderController::class,'trash'])->name('order.trash');
 Route::get('/Order/{order}',[OrderController::class,'show'])->name('order.show');
+ 

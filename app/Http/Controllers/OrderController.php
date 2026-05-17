@@ -160,4 +160,14 @@ class OrderController extends Controller
           $order->delete($order);
         return to_route('order.index')->withSuccess('Order berhasil dihapus');
     }
+
+    // soft delete
+    public function trash()
+    {
+        
+        return view('Order.trash',[
+            'title' => 'Trash Order',
+            'orders' => order::onlyTrashed()->latest()->paginate(5),
+        ]);
+    }
 }

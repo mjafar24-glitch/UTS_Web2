@@ -30,6 +30,9 @@
         <li class="nav-item">
           <a class="nav-link {{ request()->routeIs('order.index')? 'fw-bold text-warning' : ''}}" href="{{ route('order.index') }}">Order</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->routeIs('order.trash')? 'fw-bold text-warning' : ''}}" href="{{ route('order.trash') }}">Trash</a>
+        </li>
       </ul>
     </div>
   </div>
