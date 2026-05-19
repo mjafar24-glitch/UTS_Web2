@@ -42,11 +42,16 @@
                                     <td>{{ $order->catatan_pesanan }}</td>
                                     <td>
 
-                                        <a href="{{ route('order.edit', $order->id) }}" class="btn btn-danger btn-sm">Hapus</a>
+                                       
                                         <form action="{{ route('order.restore', $order->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('PUT')
                                             <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm('Apakah Anda yakin ingin mengembalikan data ini?')">Restore</button>
+                                        </form>
+                                        <form action="{{ route('order.forceDelete', $order->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini secara permanen?')">Hapus Permanen</button>
                                         </form>
                                     </td>
                                 </tr>

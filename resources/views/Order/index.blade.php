@@ -14,7 +14,7 @@
                 <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search.." >
             </div>
             <div class="col-md-4">
-                <select name="customer" class="form-control">
+                <select name="customer" class="form-control" id="customer">
                     <option value="">--Pilih Status--</option>
                     <option value="pending" {{ request('customer') == 'pending' ? 'selected' : '' }}>Pending</option>
                     <option value="proses" {{ request('customer') == 'proses' ? 'selected' : '' }}>Proses</option>

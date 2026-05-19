@@ -175,4 +175,9 @@ class OrderController extends Controller
           $order->restore();
         return to_route('order.trash')->withSuccess('Order berhasil dikembalikan');
     }
+    public function forceDelete(Order $order)
+    {
+          $order->forceDelete();
+        return to_route('order.trash')->withSuccess('Order berhasil dihapus permanen');
+    }
 }
